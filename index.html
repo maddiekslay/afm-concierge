@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GiftSpark | AI Gift Finder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">Gift<span>Spark</span></a>
+    <div class="links">
+      <a href="#features">Features</a>
+      <a href="#quiz">Gift Quiz</a>
+      <a href="about.html">Learn More</a>
+    </div>
+  </nav>
+
+  <!-- AI-generated video: autoplays, muted, loops forever -->
+  <header class="hero">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <h1>The perfect gift,<br>found in seconds.</h1>
+      <p>GiftSpark uses AI to match the people you love with gifts they'll actually want — based on their interests, your budget, and the occasion.</p>
+      <a href="about.html" class="btn">Learn How It Works →</a>
+    </div>
+  </header>
+
+  <section id="features">
+    <h2 class="section-title">Why GiftSpark?</h2>
+    <p class="section-sub">Gift shopping without the guesswork.</p>
+    <div class="cards">
+      <div class="card"><div class="icon">🧠</div><h3>AI Matching</h3><p>Describe the person and our AI finds gifts that fit their personality.</p></div>
+      <div class="card"><div class="icon">💸</div><h3>Any Budget</h3><p>Set a price range and get ideas from $10 to $500+.</p></div>
+      <div class="card"><div class="icon">⏰</div><h3>Never Forget</h3><p>Smart reminders for birthdays, anniversaries, and holidays.</p></div>
+      <div class="card"><div class="icon">🎁</div><h3>One-Click Shop</h3><p>Every idea links straight to trusted retailers.</p></div>
+    </div>
+  </section>
+
+  <!-- X-Factor: interactive gift quiz -->
+  <section id="quiz">
+    <h2 class="section-title">Try the Gift Quiz 🎉</h2>
+    <p class="section-sub">Answer 3 quick questions and get an instant gift match.</p>
+    <div class="quiz" id="quiz-box">
+      <div class="progress"><div class="bar" id="bar"></div></div>
+      <div id="quiz-body"></div>
+    </div>
+  </section>
+
+  <div class="xfactor">
+    <h4>✨ Our X-Factor</h4>
+    <p>The interactive Gift Quiz lets visitors answer three questions and instantly receive a personalized gift match, celebrated with a confetti animation. It turns browsing into a fun, hands-on preview of GiftSpark's AI recommendations.</p>
+  </div>
+
+  <footer>© 2026 GiftSpark · A class project for SMU · <a href="about.html">Learn more</a></footer>
+
+  <script>
+    const questions = [
+      { q: 'Who are you shopping for?', a: ['Partner', 'Parent', 'Friend', 'Coworker'] },
+      { q: 'What are they into?', a: ['Cooking', 'Tech', 'Wellness', 'Adventure'] },
+      { q: "What's your budget?", a: ['Under $25', '$25–$75', '$75–$150', 'Sky is the limit'] },
+    ];
+    const gifts = {
+      Cooking: { e: '🍳', items: ['Artisan spice sampler', 'Fresh pasta-making kit', 'Premium chef knife'] },
+      Tech: { e: '🎧', items: ['Smart tracker tag', 'Wireless charging stand', 'Noise-cancelling headphones'] },
+      Wellness: { e: '🧘', items: ['Aromatherapy candle set', 'Weighted blanket', 'Massage gun'] },
+      Adventure: { e: '🏕️', items: ['Scratch-off travel map', 'Portable hammock', 'Hot air balloon ride voucher'] },
+    };
+    const tier = { 'Under $25': 0, '$25–$75': 1, '$75–$150': 2, 'Sky is the limit': 2 };
+    let step = 0, answers = [];
+    const body = document.getElementById('quiz-body'), bar = document.getElementById('bar');
+
+    function render() {
+      bar.style.width = (step / questions.length * 100) + '%';
+      if (step === questions.length) return showResult();
+      const { q, a } = questions[step];
+      body.innerHTML = `<h3>${q}</h3><div class="options">${a.map(x => `<button>${x}</button>`).join('')}</div>`;
+      body.querySelectorAll('button').forEach(b => b.onclick = () => { answers.push(b.textContent); step++; render(); });
+    }
+    function showResult() {
+      const [who, interest, budget] = answers;
+      const g = gifts[interest], top = g.items[tier[budget]];
+      body.innerHTML = `<div class="result"><p>Your perfect match for your <b>${who.toLowerCase()}</b> is…</p>
+        <div class="gift">${g.e}</div><h3>${top}</h3>
+        <ul>${g.items.filter(i => i !== top).map(i => `<li>Also great: ${i}</li>`).join('')}</ul>
+        <button class="btn" id="again">Take it again</button></div>`;
+      document.getElementById('again').onclick = () => { step = 0; answers = []; render(); };
+      confetti();
+    }
+    function confetti() {
+      const colors = ['#e8566c', '#7b5cff', '#ffc94d', '#3ccf91', '#4db8ff'];
+      for (let i = 0; i < 80; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.background = colors[i % colors.length];
+        c.style.animationDuration = 2 + Math.random() * 2 + 's';
+        c.style.animationDelay = Math.random() * 0.5 + 's';
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 5000);
+      }
+    }
+    render();
+  </script>
+  <script src="chatbot.js"></script>
+</body>
+</html>
