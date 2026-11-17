@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GiftSpark | AI Gift Finder</title>
+  <title>AFM Concierge | AI Assistant for Global Firm Meetings</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <nav>
-    <a href="index.html" class="logo">Gift<span>Spark</span></a>
+    <a href="index.html" class="logo">AFM <span>Concierge</span></a>
     <div class="links">
-      <a href="#features">Features</a>
-      <a href="#quiz">Gift Quiz</a>
+      <a href="#cities">Cities</a>
+      <a href="#clocks">Time Zones</a>
       <a href="about.html">Learn More</a>
     </div>
   </nav>
@@ -24,87 +24,106 @@
       <source src="video.mp4" type="video/mp4">
     </video>
     <div class="hero-content">
-      <h1>The perfect gift,<br>found in seconds.</h1>
-      <p>GiftSpark uses AI to match the people you love with gifts they'll actually want — based on their interests, your budget, and the occasion.</p>
-      <a href="about.html" class="btn">Learn How It Works →</a>
+      <h1>One meeting.<br>Four cities. One assistant.</h1>
+      <p>AFM Concierge is an AI chatbot that answers every attendee question about your firm's annual meeting, from agendas to venues to livestream links, in seconds, in any city.</p>
+      <a href="about.html" class="btn">See How It Works →</a>
     </div>
   </header>
 
   <section id="features">
-    <h2 class="section-title">Why GiftSpark?</h2>
-    <p class="section-sub">Gift shopping without the guesswork.</p>
+    <h2 class="section-title">Why AFM Concierge?</h2>
+    <p class="section-sub">Event teams answer the same questions hundreds of times. Let AI handle it.</p>
     <div class="cards">
-      <div class="card"><div class="icon">🧠</div><h3>AI Matching</h3><p>Describe the person and our AI finds gifts that fit their personality.</p></div>
-      <div class="card"><div class="icon">💸</div><h3>Any Budget</h3><p>Set a price range and get ideas from $10 to $500+.</p></div>
-      <div class="card"><div class="icon">⏰</div><h3>Never Forget</h3><p>Smart reminders for birthdays, anniversaries, and holidays.</p></div>
-      <div class="card"><div class="icon">🎁</div><h3>One-Click Shop</h3><p>Every idea links straight to trusted retailers.</p></div>
+      <div class="card"><div class="icon">💬</div><h3>24/7 Answers</h3><p>Attendees get instant answers about schedules, dress code, travel, and more.</p></div>
+      <div class="card"><div class="icon">🌍</div><h3>City-Aware</h3><p>Asks which city you're attending and tailors every answer to that location.</p></div>
+      <div class="card"><div class="icon">📺</div><h3>Livestream Ready</h3><p>Remote viewers get the same support as in-person guests.</p></div>
+      <div class="card"><div class="icon">📉</div><h3>Fewer Emails</h3><p>Cuts repetitive inbox questions so the event team can focus on the experience.</p></div>
     </div>
   </section>
 
-  <!-- X-Factor: interactive gift quiz -->
-  <section id="quiz">
-    <h2 class="section-title">Try the Gift Quiz 🎉</h2>
-    <p class="section-sub">Answer 3 quick questions and get an instant gift match.</p>
-    <div class="quiz" id="quiz-box">
-      <div class="progress"><div class="bar" id="bar"></div></div>
-      <div id="quiz-body"></div>
+  <section id="cities" style="background:#fff">
+    <h2 class="section-title">Built for a Global Meeting</h2>
+    <p class="section-sub">One event experience across every location.</p>
+    <div class="cards city-grid">
+      <div class="card city"><div class="icon">🤠</div><h3>Dallas</h3><p>United States</p></div>
+      <div class="card city"><div class="icon">🍁</div><h3>Toronto</h3><p>Canada</p></div>
+      <div class="card city"><div class="icon">💂</div><h3>London</h3><p>Europe</p></div>
+      <div class="card city"><div class="icon">🕌</div><h3>Hyderabad</h3><p>Asia-Pacific</p></div>
+      <div class="card city"><div class="icon">📡</div><h3>Livestream</h3><p>Join from anywhere</p></div>
+    </div>
+  </section>
+
+  <!-- X-Factor: live world clocks + session time converter -->
+  <section id="clocks">
+    <h2 class="section-title">Live Time Zone Planner 🕒</h2>
+    <p class="section-sub">See the time in every host city right now, then convert any session time.</p>
+    <div class="clock-grid" id="clock-grid"></div>
+    <div class="converter">
+      <h3>When does a session start in my city?</h3>
+      <div class="conv-row">
+        <label>Session time in
+          <select id="conv-from"></select>
+        </label>
+        <input type="time" id="conv-time" value="09:00">
+      </div>
+      <div class="conv-out" id="conv-out"></div>
     </div>
   </section>
 
   <div class="xfactor">
     <h4>✨ Our X-Factor</h4>
-    <p>The interactive Gift Quiz lets visitors answer three questions and instantly receive a personalized gift match, celebrated with a confetti animation. It turns browsing into a fun, hands-on preview of GiftSpark's AI recommendations.</p>
+    <p>A Live Time Zone Planner shows ticking clocks for all four host cities, with day/night icons, and converts any session time across Dallas, Toronto, London and Hyderabad, so global attendees never miss a keynote.</p>
   </div>
 
-  <footer>© 2026 GiftSpark · A class project for SMU · <a href="about.html">Learn more</a></footer>
+  <footer>AFM Concierge · Student project for SMU's MS in AI for Business · <a href="about.html">Learn more</a></footer>
 
   <script>
-    const questions = [
-      { q: 'Who are you shopping for?', a: ['Partner', 'Parent', 'Friend', 'Coworker'] },
-      { q: 'What are they into?', a: ['Cooking', 'Tech', 'Wellness', 'Adventure'] },
-      { q: "What's your budget?", a: ['Under $25', '$25–$75', '$75–$150', 'Sky is the limit'] },
+    const cities = [
+      { name: 'Dallas', tz: 'America/Chicago' },
+      { name: 'Toronto', tz: 'America/Toronto' },
+      { name: 'London', tz: 'Europe/London' },
+      { name: 'Hyderabad', tz: 'Asia/Kolkata' },
     ];
-    const gifts = {
-      Cooking: { e: '🍳', items: ['Artisan spice sampler', 'Fresh pasta-making kit', 'Premium chef knife'] },
-      Tech: { e: '🎧', items: ['Smart tracker tag', 'Wireless charging stand', 'Noise-cancelling headphones'] },
-      Wellness: { e: '🧘', items: ['Aromatherapy candle set', 'Weighted blanket', 'Massage gun'] },
-      Adventure: { e: '🏕️', items: ['Scratch-off travel map', 'Portable hammock', 'Hot air balloon ride voucher'] },
-    };
-    const tier = { 'Under $25': 0, '$25–$75': 1, '$75–$150': 2, 'Sky is the limit': 2 };
-    let step = 0, answers = [];
-    const body = document.getElementById('quiz-body'), bar = document.getElementById('bar');
+    const grid = document.getElementById('clock-grid');
+    grid.innerHTML = cities.map((c, i) => `
+      <div class="clock-card"><div class="clock-icon" id="ic${i}"></div>
+      <div class="clock-city">${c.name}</div><div class="clock-time" id="t${i}"></div>
+      <div class="clock-date" id="d${i}"></div></div>`).join('');
 
-    function render() {
-      bar.style.width = (step / questions.length * 100) + '%';
-      if (step === questions.length) return showResult();
-      const { q, a } = questions[step];
-      body.innerHTML = `<h3>${q}</h3><div class="options">${a.map(x => `<button>${x}</button>`).join('')}</div>`;
-      body.querySelectorAll('button').forEach(b => b.onclick = () => { answers.push(b.textContent); step++; render(); });
+    function hourIn(tz, date) { return +new Intl.DateTimeFormat('en-US', { hour: 'numeric', hourCycle: 'h23', timeZone: tz }).format(date); }
+    function tick() {
+      const now = new Date();
+      cities.forEach((c, i) => {
+        document.getElementById('t' + i).textContent = now.toLocaleTimeString('en-US', { timeZone: c.tz, hour: 'numeric', minute: '2-digit', second: '2-digit' });
+        document.getElementById('d' + i).textContent = now.toLocaleDateString('en-US', { timeZone: c.tz, weekday: 'short', month: 'short', day: 'numeric' });
+        const h = hourIn(c.tz, now);
+        document.getElementById('ic' + i).textContent = h >= 6 && h < 18 ? '☀️' : '🌙';
+      });
     }
-    function showResult() {
-      const [who, interest, budget] = answers;
-      const g = gifts[interest], top = g.items[tier[budget]];
-      body.innerHTML = `<div class="result"><p>Your perfect match for your <b>${who.toLowerCase()}</b> is…</p>
-        <div class="gift">${g.e}</div><h3>${top}</h3>
-        <ul>${g.items.filter(i => i !== top).map(i => `<li>Also great: ${i}</li>`).join('')}</ul>
-        <button class="btn" id="again">Take it again</button></div>`;
-      document.getElementById('again').onclick = () => { step = 0; answers = []; render(); };
-      confetti();
+    tick(); setInterval(tick, 1000);
+
+    // Converter: offset of a time zone (in minutes) at a given moment
+    function offset(tz, date) {
+      const p = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).formatToParts(date).map(x => [x.type, x.value]));
+      return (Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, p.second) - date.getTime()) / 60000;
     }
-    function confetti() {
-      const colors = ['#e8566c', '#7b5cff', '#ffc94d', '#3ccf91', '#4db8ff'];
-      for (let i = 0; i < 80; i++) {
-        const c = document.createElement('div');
-        c.className = 'confetti';
-        c.style.left = Math.random() * 100 + 'vw';
-        c.style.background = colors[i % colors.length];
-        c.style.animationDuration = 2 + Math.random() * 2 + 's';
-        c.style.animationDelay = Math.random() * 0.5 + 's';
-        document.body.appendChild(c);
-        setTimeout(() => c.remove(), 5000);
-      }
+    const sel = document.getElementById('conv-from');
+    sel.innerHTML = cities.map((c, i) => `<option value="${i}">${c.name}</option>`).join('');
+    function convert() {
+      const [hh, mm] = document.getElementById('conv-time').value.split(':').map(Number);
+      const from = cities[sel.value], now = new Date();
+      const utc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), hh, mm) - offset(from.tz, now) * 60000;
+      const moment = new Date(utc);
+      document.getElementById('conv-out').innerHTML = cities.map(c => {
+        const t = moment.toLocaleTimeString('en-US', { timeZone: c.tz, hour: 'numeric', minute: '2-digit' });
+        const d = moment.toLocaleDateString('en-US', { timeZone: c.tz, weekday: 'short' });
+        const h = hourIn(c.tz, moment);
+        return `<div class="conv-item ${c === from ? 'from' : ''}"><b>${c.name}</b><span>${h >= 6 && h < 18 ? '☀️' : '🌙'} ${t} <small>${d}</small></span></div>`;
+      }).join('');
     }
-    render();
+    sel.onchange = convert;
+    document.getElementById('conv-time').oninput = convert;
+    convert();
   </script>
   <script src="chatbot.js"></script>
 </body>
